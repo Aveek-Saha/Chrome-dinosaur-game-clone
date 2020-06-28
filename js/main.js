@@ -13,11 +13,11 @@ Main.prototype = {
 		score = 0;
 
 		this.tileWidth = this.game.cache.getImage('tile').width;
-		this.tileHeight = this.game.cache.getImage('tile').height;	
+		this.tileHeight = this.game.cache.getImage('tile').height;
 		this.boxHeight = this.game.cache.getImage('box').height;
 
 		this.game.stage.backgroundColor = '479cde';
-		
+
 
 		this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -28,14 +28,14 @@ Main.prototype = {
 		this.boxes = this.game.add.group();
 		this.boxes.enableBody = true;
 		this.boxes.createMultiple(20, 'box');
-		this.game.world.bringToTop(this.floor)
+		this.game.world.bringToTop(this.floor);
 
 		this.jumping = false;
 
 		this.addBase();
 		this.createScore();
 		this.createPlayer();
-		this.cursors = this.game.input.keyboard.createCursorKeys(); 
+		this.cursors = this.game.input.keyboard.createCursorKeys();
 
 		this.timer = game.time.events.loop(this.rate, this.addObstacles, this);
 		this.Scoretimer = game.time.events.loop(100, this.incrementScore, this);
@@ -92,7 +92,7 @@ Main.prototype = {
 
 		for (var i = 0; i < tilesNeeded; i++) {
 
-			this.addBox(this.game.world.width , this.game.world.height - 
+			this.addBox(this.game.world.width , this.game.world.height -
 				this.tileHeight - ((i + 1)* this.boxHeight ));
 
 		}
@@ -144,7 +144,7 @@ Main.prototype = {
 
 	createPlayer: function () {
 
-		this.player = this.game.add.sprite(this.game.world.width/5, this.game.world.height - 
+		this.player = this.game.add.sprite(this.game.world.width/5, this.game.world.height -
 			(this.tileHeight*2), 'player');
 		this.player.scale.setTo(4, 4);
 		this.player.anchor.setTo(0.5, 1.0);
@@ -174,7 +174,7 @@ Main.prototype = {
 
 		if (window.localStorage.getItem('HighScore') == null) {
 			this.highScore.setText(0);
-			this.highScore.setText(window.localStorage.setItem('HighScore', 0));
+			window.localStorage.setItem('HighScore', 0);
 		}
 		else {
 			this.highScore.setText(window.localStorage.getItem('HighScore'));
